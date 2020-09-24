@@ -3,6 +3,9 @@
 /www
 /custom_components
 /themes
+/tts
+/deps
+/image
 
 secrets.yaml
 .ps4-games.json
