@@ -1,0 +1,6 @@
+- platform: group
+  name: Decke1
+  entities:
+    - light.tint1_light
+    - light.tint2_light
+    - light.tint3_light

@@ -1,0 +1,35 @@
+- name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 10
+  icon: mdi:home
+
+- name: Hannah
+  latitude: 51.05918
+  longitude: 6.92224
+  radius: 10
+  icon: mdi:home
+
+- name: Familie
+  latitude: 51.11084
+  longitude: 6.96537
+  radius: 10
+  icon: mdi:home
+
+- name: Arbeit
+  latitude: 51.24904
+  longitude: 6.77429
+  radius: 50
+  icon: mdi:briefcase
+
+- name: Arbeit
+  latitude: 51.23178
+  longitude: 6.75532
+  radius: 30
+  icon: mdi:briefcase
+
+- name: Wache Monheim
+  latitude: 51.09060
+  longitude: 6.89916
+  radius: 60
+  icon: mdi:fireplace

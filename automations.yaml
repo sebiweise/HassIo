@@ -1,0 +1,561 @@
+- id: update_zigbeemap
+  alias: Zigbee Map aktualisieren
+  trigger:
+  - at: 08:00
+    platform: time
+  - entity_id: input_boolean.zigbee_permit_join
+    from: 'on'
+    platform: state
+    to: 'off'
+  action:
+  - service: zigbee2mqtt_networkmap.update
+- id: enable_zigbee_join
+  alias: Enable Zigbee joining
+  trigger:
+    platform: state
+    entity_id: input_boolean.zigbee_permit_join
+    to: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/bridge/config/permit_join
+      payload: 'true'
+  - service: timer.start
+    data:
+      entity_id: timer.zigbee_permit_join
+- id: disable_zigbee_join
+  alias: Disable Zigbee joining
+  trigger:
+  - entity_id: input_boolean.zigbee_permit_join
+    platform: state
+    to: 'off'
+  action:
+  - data:
+      payload: 'false'
+      topic: zigbee2mqtt/bridge/config/permit_join
+    service: mqtt.publish
+  - data:
+      entity_id: timer.zigbee_permit_join
+    service: timer.cancel
+- id: disable_zigbee_join_timer
+  alias: Disable Zigbee joining by timer
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.zigbee_permit_join
+  action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/bridge/config/permit_join
+      payload: 'false'
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.zigbee_permit_join
+- id: '1592500179353'
+  alias: Switch Büro Licht Umschalten
+  description: ''
+  trigger:
+  - device_id: 1e19dc5e88614dfd97db28575f2ff3af
+    discovery_id: 0x00158d000407d96d click_single
+    domain: mqtt
+    platform: device
+    subtype: single
+    type: click
+  condition: []
+  action:
+  - device_id: 073674e5873c49648aa09595292d6dba
+    domain: light
+    entity_id: light.bulb1_light
+    type: toggle
+- id: '1592550444211'
+  alias: Switch Schlafzimmer Umschalten - Single
+  description: ''
+  trigger:
+  - device_id: 33ffaca4e0c049348f35eafea66bd21b
+    discovery_id: 0x00158d000407f57c click_single
+    domain: mqtt
+    platform: device
+    subtype: single
+    type: click
+  condition:
+  - condition: state
+    entity_id: group.persons
+    state: home
+  action:
+  - device_id: b896353655fd426fb237dfb8c0ebd9df
+    domain: light
+    entity_id: light.bulb2_light
+    type: toggle
+  - device_id: 79ff99f5fdf64c468ec9742aac7f3848
+    domain: light
+    entity_id: light.flex1_light
+    type: toggle
+- id: '1592565860003'
+  alias: Switch Badezimmer On
+  description: ''
+  trigger:
+  - device_id: bf0fc7adbb1344de8409f985954e95e0
+    discovery_id: 0xec1bbdfffebb05fb click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  condition: []
+  action:
+  - device_id: 5921671c433d4aa4abf5fa000f9f25fc
+    domain: light
+    entity_id: light.panel1_light
+    type: turn_on
+- id: '1592565874995'
+  alias: Switch Badezimmer Off
+  description: ''
+  trigger:
+  - device_id: bf0fc7adbb1344de8409f985954e95e0
+    discovery_id: 0xec1bbdfffebb05fb click_off
+    domain: mqtt
+    platform: device
+    subtype: 'off'
+    type: click
+  condition: []
+  action:
+  - device_id: 5921671c433d4aa4abf5fa000f9f25fc
+    domain: light
+    entity_id: light.panel1_light
+    type: turn_off
+- id: '1592567102145'
+  alias: Switch Abstellraum Umschalten - On
+  description: ''
+  trigger:
+  - device_id: 463781d0fa5247ff9d1040e9fd8d3f7b
+    discovery_id: 0x680ae2fffe7d3438 click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  condition: []
+  action:
+  - device_id: 33acbf5de41f46d1b60086cdaa71da3f
+    domain: light
+    entity_id: light.bulb4_light
+    type: turn_on
+  mode: single
+- id: '1592567464768'
+  alias: Switch Wohnzimmer Umschalten - Single
+  description: ''
+  trigger:
+  - device_id: 1f686397e3fc4781b0f7e5855698d001
+    discovery_id: 0x00158d000407f589 click_single
+    domain: mqtt
+    platform: device
+    subtype: single
+    type: click
+  condition: []
+  action:
+  - device_id: d6623553ef894050aec89114d973863a
+    domain: light
+    entity_id: light.bulb3_light
+    type: toggle
+  mode: single
+- id: '1592567504001'
+  alias: Switch Wohnzimmer Umschalten - Double
+  description: ''
+  trigger:
+  - device_id: 1f686397e3fc4781b0f7e5855698d001
+    discovery_id: 0x00158d000407f589 click_double
+    domain: mqtt
+    platform: device
+    subtype: double
+    type: click
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.decke1
+    service: light.toggle
+- id: '1592841212307'
+  alias: Switch Küche On
+  description: ''
+  trigger:
+  - device_id: 4f1c5738d4b44545b54ed16b4cffd83e
+    discovery_id: 0x588e81fffe2cbe62 click_on
+    domain: mqtt
+    platform: device
+    subtype: 'on'
+    type: click
+  condition: []
+  action:
+  - device_id: 43eb146d80ec45248e1a2d2be2d51adb
+    domain: light
+    entity_id: light.flex2_light
+    type: turn_on
+- id: '1592841226779'
+  alias: Switch Küche Off
+  description: ''
+  trigger:
+  - device_id: 4f1c5738d4b44545b54ed16b4cffd83e
+    discovery_id: 0x588e81fffe2cbe62 click_off
+    domain: mqtt
+    platform: device
+    subtype: 'off'
+    type: click
+  condition: []
+  action:
+  - device_id: 43eb146d80ec45248e1a2d2be2d51adb
+    domain: light
+    entity_id: light.flex2_light
+    type: turn_off
+- id: '1594138823837'
+  alias: Switch Badezimmer Off - Single 2
+  description: ''
+  trigger:
+  - device_id: 852e886204d04eeeafa64893114919c5
+    discovery_id: 0x04cf8cdf3c77d1a7 action_button_2_single
+    domain: mqtt
+    platform: device
+    subtype: button_2_single
+    type: action
+  condition: []
+  action:
+  - device_id: 5921671c433d4aa4abf5fa000f9f25fc
+    domain: light
+    entity_id: light.panel1_light
+    type: turn_off
+- id: '1594139122727'
+  alias: Switch Badezimmer On - Single 1
+  description: ''
+  trigger:
+  - device_id: 852e886204d04eeeafa64893114919c5
+    discovery_id: 0x04cf8cdf3c77d1a7 action_button_1_single
+    domain: mqtt
+    platform: device
+    subtype: button_1_single
+    type: action
+  condition: []
+  action:
+  - device_id: 5921671c433d4aa4abf5fa000f9f25fc
+    domain: light
+    entity_id: light.panel1_light
+    flash: long
+    type: turn_on
+- id: '1594497029621'
+  alias: Away Mode
+  description: ''
+  trigger:
+  - entity_id: group.persons
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - data: {}
+    entity_id: all
+    service: light.turn_off
+  - data: {}
+    service: script.tado_away
+  - data: {}
+    service: script.windows_notify_open
+- id: '1594497154869'
+  alias: Door Open Notification
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.haustr_contact
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.persons
+    state: not_home
+  action:
+  - data:
+      message: Die Tür wurde unerwartet geöffnet!
+    service: notify.mobile_app_sm_g973f
+- id: '1594497505269'
+  alias: HassIO Update
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.updater
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version')}}
+        is now available.
+      title: New Home Assistant Release
+    service: notify.mobile_app_sm_g973f
+- id: '1594498205181'
+  alias: Welcome Home
+  description: ''
+  trigger:
+  - entity_id: group.persons
+    from: not_home
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data: {}
+    service: script.light_set_home
+  - data: {}
+    service: script.tado_home
+  mode: single
+- id: '1594498764211'
+  alias: Zigbee Device Update
+  description: ''
+  trigger:
+  - entity_id: group.zigbee_device_update
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Zigbee Device Update available!
+    service: notify.mobile_app_sm_g973f
+- id: '1567199368534'
+  alias: HA recovers after power outage
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - condition: state
+    entity_id: input_boolean.maintenance_mode
+    state: 'off'
+  action:
+  - delay: 00:00:30
+  - entity_id: all
+    service: light.turn_off
+  - data:
+      message: Home Assistant started after unexpected shutdown.
+    service: notify.mobile_app_sm_g973f
+  mode: single
+- id: '1567201768135'
+  alias: Maintenance mode
+  trigger:
+  - event: shutdown
+    platform: homeassistant
+  action:
+  - entity_id: input_boolean.maintenance_mode
+    service: input_boolean.turn_on
+  mode: single
+- id: '1599319519487'
+  alias: Switch Abstellraum Umschalten - Off
+  description: ''
+  trigger:
+  - device_id: 463781d0fa5247ff9d1040e9fd8d3f7b
+    discovery_id: 0x680ae2fffe7d3438 click_off
+    domain: mqtt
+    platform: device
+    subtype: 'off'
+    type: click
+  condition: []
+  action:
+  - device_id: 33acbf5de41f46d1b60086cdaa71da3f
+    domain: light
+    entity_id: light.bulb4_light
+    type: turn_off
+  mode: single
+- id: '1599634948544'
+  alias: Badfenster open - Heating off
+  description: ''
+  trigger:
+  - device_id: 32272979cf9a47908b1c48e8d1f37a4f
+    domain: binary_sensor
+    entity_id: binary_sensor.badfenster_contact
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    platform: device
+    type: opened
+  condition: []
+  action:
+  - device_id: 9bf52f96fcd511ea9bc05b3662d5ae2c
+    domain: climate
+    entity_id: climate.badezimmer
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1599634991023'
+  alias: Badfenster close - Heating auto
+  description: ''
+  trigger:
+  - device_id: 32272979cf9a47908b1c48e8d1f37a4f
+    domain: binary_sensor
+    entity_id: binary_sensor.badfenster_contact
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+    platform: device
+    type: not_opened
+  condition: []
+  action:
+  - device_id: 9bf52f96fcd511ea9bc05b3662d5ae2c
+    domain: climate
+    entity_id: climate.badezimmer
+    type: set_hvac_mode
+    hvac_mode: auto
+  mode: single
+- id: '1599635146310'
+  alias: Bürofenster open - Heating off
+  description: ''
+  trigger:
+  - device_id: 2bf2878e4ba74aa583b4c99b8a7c6256
+    domain: binary_sensor
+    entity_id: binary_sensor.buerofenster_1_contact
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+    platform: device
+    type: opened
+  - type: opened
+    platform: device
+    device_id: 582b7b80fcd011ea9900b34188a8f9b9
+    entity_id: binary_sensor.buerofenster_2_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: 9bfb6d6dfcd511eab26c5bbe405efff0
+    domain: climate
+    entity_id: climate.buro
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1599635170437'
+  alias: Bürofenster close - Heating auto
+  description: ''
+  trigger:
+  - device_id: 2bf2878e4ba74aa583b4c99b8a7c6256
+    domain: binary_sensor
+    entity_id: binary_sensor.buerofenster_1_contact
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+    platform: device
+    type: not_opened
+  - type: not_opened
+    platform: device
+    device_id: 582b7b80fcd011ea9900b34188a8f9b9
+    entity_id: binary_sensor.buerofenster_2_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - device_id: 9bfb6d6dfcd511eab26c5bbe405efff0
+    domain: climate
+    entity_id: climate.buro
+    type: set_hvac_mode
+    hvac_mode: auto
+  mode: single
+- id: '1599658799345'
+  alias: Window Open Notification
+  description: ''
+  trigger:
+  - entity_id: group.windows
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.persons
+    state: not_home
+  action:
+  - data:
+      message: Ein Fenster wurde unerwartet geöffnet!
+    service: notify.mobile_app_sm_g973f
+  mode: single
+- id: '1600528450484'
+  alias: Schlafzimmerfenster open - Heating off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: b9d9e06ef9c411ea908f970d33c1bba1
+    entity_id: binary_sensor.schlafzimmerfenster_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: 9beb7420fcd511eaa5a251331e0065bd
+    domain: climate
+    entity_id: climate.schlafzimmer
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1600528478979'
+  alias: Schlafzimmerfenster close - Heating auto
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: b9d9e06ef9c411ea908f970d33c1bba1
+    entity_id: binary_sensor.schlafzimmerfenster_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - device_id: 9beb7420fcd511eaa5a251331e0065bd
+    domain: climate
+    entity_id: climate.schlafzimmer
+    type: set_hvac_mode
+    hvac_mode: auto
+  mode: single
+- id: '1600861093400'
+  alias: Wohnzimmerfenster close - Heating auto
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: ba8e71effcd011eaae951d0a7421378a
+    entity_id: binary_sensor.wohnzimmerfenster_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: 9be8ac74fcd511eaa71feb7b4e8544ca
+    domain: climate
+    entity_id: climate.wohnzimmer
+    type: set_hvac_mode
+    hvac_mode: auto
+  mode: single
+- id: '1600861127097'
+  alias: Wohnzimmerfenster open - Heating off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: ba8e71effcd011eaae951d0a7421378a
+    entity_id: binary_sensor.wohnzimmerfenster_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - device_id: 9be8ac74fcd511eaa71feb7b4e8544ca
+    domain: climate
+    entity_id: climate.wohnzimmer
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single

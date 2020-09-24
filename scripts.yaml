@@ -1,0 +1,66 @@
+tado_home:
+  alias: Tado set Home
+  sequence:
+  - device_id: 92ceaa453c464885a35cd2711bf97389
+    domain: climate
+    entity_id: climate.wohnzimmer
+    preset_mode: home
+    type: set_preset_mode
+  - device_id: 40416a3467ce49cab4339e79709ffae2
+    domain: climate
+    entity_id: climate.schlafzimmer
+    preset_mode: home
+    type: set_preset_mode
+  - device_id: 0e9df7eb5ab94f7ea8dca8622020fd36
+    domain: climate
+    entity_id: climate.badezimmer
+    preset_mode: home
+    type: set_preset_mode
+  - device_id: 7ce40826674440cb98fbe7ad0a1f7597
+    domain: climate
+    entity_id: climate.buro
+    preset_mode: home
+    type: set_preset_mode
+tado_away:
+  alias: Tado set Away
+  sequence:
+  - device_id: 92ceaa453c464885a35cd2711bf97389
+    domain: climate
+    entity_id: climate.wohnzimmer
+    preset_mode: away
+    type: set_preset_mode
+  - device_id: 40416a3467ce49cab4339e79709ffae2
+    domain: climate
+    entity_id: climate.schlafzimmer
+    preset_mode: away
+    type: set_preset_mode
+  - device_id: 0e9df7eb5ab94f7ea8dca8622020fd36
+    domain: climate
+    entity_id: climate.badezimmer
+    preset_mode: away
+    type: set_preset_mode
+  - device_id: 7ce40826674440cb98fbe7ad0a1f7597
+    domain: climate
+    entity_id: climate.buro
+    preset_mode: away
+    type: set_preset_mode
+light_set_home:
+  alias: Light set home
+  sequence:
+  - device_id: d6623553ef894050aec89114d973863a
+    domain: light
+    entity_id: light.bulb3_light
+    flash: long
+    type: turn_on
+  - after: sunset
+    before: sunrise
+    condition: sun
+windows_notify_open:
+  alias: Notify window open
+  sequence:
+  - condition: state
+    entity_id: group.windows
+    state: 'on'
+  - data:
+      message: Es sind noch Fenster offen!
+    service: notify.mobile_app_sm_g973f

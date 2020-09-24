@@ -1,0 +1,20 @@
+homekit:
+  auto_start: true
+  filter:
+    include_domains:
+      - switch
+      - light
+      - vacuum
+      - climate
+      - camera
+      - alarm_control_panel
+      - fan
+      - lock
+      - cover
+    include_entities:
+      - group.windows
+      - media_player.tvwohn
+    exclude_entities:
+      - light.tint1_light
+      - light.tint2_light
+      - light.tint3_light

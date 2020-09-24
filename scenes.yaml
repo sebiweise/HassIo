@@ -1,0 +1,5 @@
+- id: '1600026276370'
+  name: Kuschelzeit
+  entities:
+    light.bulb2_light:
+      state: 'on'
