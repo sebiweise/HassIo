@@ -17,8 +17,6 @@ logger:
   logs:
     homeassistant.components.tado: debug
 
-breaking_changes:
-
 http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
