@@ -1,6 +1,5 @@
 config:
 discovery:
-hassio:
 map:
 webhook:
 mobile_app:
@@ -14,8 +13,6 @@ recorder:
 
 logger:
   default: info
-  logs:
-    homeassistant.components.tado: debug
 
 http:
   ip_ban_enabled: true
@@ -46,17 +43,6 @@ sensor:
       - type: memory_use_percent
       - type: processor_use
       - type: last_boot
-      
-  - platform: command_line
-    name: CPU Temp
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) | round(1) }}'
-
-  - platform: command_line
-    command: "cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) | round(2) }}'
 
   - platform: sql
     db_url: !secret db_url
