@@ -1,9 +1,6 @@
 sun:
 
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    mode: daily
+#weather:
 
 sensor:
   - platform: template

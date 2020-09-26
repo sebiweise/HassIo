@@ -12,7 +12,6 @@ homekit:
       - lock
       - cover
     include_entities:
-      - group.windows
       - media_player.tvwohn
     exclude_entities:
       - light.tint1_light

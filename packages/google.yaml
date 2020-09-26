@@ -14,8 +14,6 @@ google_assistant:
     - lock
     - cover
   entity_config:
-    group.windows:
-        expose: true
     light.tint1_light:
         expose: false
     light.tint2_light:

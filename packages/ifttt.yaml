@@ -1,2 +1,3 @@
+webhook:
 ifttt:
   key: !secret ifttt_api_key
