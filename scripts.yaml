@@ -68,15 +68,15 @@ restart_hass:
     alias: Restart Home Assistant
     sequence:
       - service: shell_command.restart_hass
-restart_hass:
+restart_zigbee2mqtt:
     alias: Restart Zigbee2MQTT
     sequence:
       - service: shell_command.restart_zigbee2mqtt
-restart_hass:
+restart_mosquitto:
     alias: Restart Mosquitto Broker
     sequence:
       - service: shell_command.restart_mosquitto
-restart_hass:
+restart_unifi:
     alias: Restart Unifi Controller
     sequence:
       - service: shell_command.restart_unifi
