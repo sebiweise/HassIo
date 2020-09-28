@@ -64,3 +64,19 @@ windows_notify_open:
   - data:
       message: Es sind noch Fenster offen!
     service: notify.mobile_app_sm_g973f
+restart_hass:
+    alias: Restart Home Assistant
+    sequence:
+      - service: shell_command.restart_hass
+restart_hass:
+    alias: Restart Zigbee2MQTT
+    sequence:
+      - service: shell_command.restart_zigbee2mqtt
+restart_hass:
+    alias: Restart Mosquitto Broker
+    sequence:
+      - service: shell_command.restart_mosquitto
+restart_hass:
+    alias: Restart Unifi Controller
+    sequence:
+      - service: shell_command.restart_unifi
