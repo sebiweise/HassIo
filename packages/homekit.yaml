@@ -2,15 +2,7 @@ homekit:
   auto_start: true
   filter:
     include_domains:
-      - switch
       - light
-      - vacuum
-      - climate
-      - camera
-      - alarm_control_panel
-      - fan
-      - lock
-      - cover
     include_entities:
       - media_player.tvwohn
     exclude_entities:
