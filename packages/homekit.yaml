@@ -1,11 +1,5 @@
 homekit:
   auto_start: true
   filter:
-    include_domains:
-      - light
     include_entities:
-      - media_player.tvwohn
-    exclude_entities:
-      - light.tint1_light
-      - light.tint2_light
-      - light.tint3_light
+      - switch.plug1_switch

@@ -4,21 +4,6 @@ google_assistant:
   report_state: true
   secure_devices_pin: !secret google_securedevicespin
   exposed_domains:
-    - switch
-    - light
     - vacuum
-    - climate
-    - camera
-    - alarm_control_panel
-    - fan
-    - lock
-    - cover
-  entity_config:
-    light.tint1_light:
-        expose: false
-    light.tint2_light:
-        expose: false
-    light.tint3_light:
-        expose: false
 
 cast:
