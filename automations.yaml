@@ -69,22 +69,6 @@
     service: script.tado_away
   - data: {}
     service: script.windows_notify_open
-- id: '1594497154869'
-  alias: Door Open Notification
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.haustr_contact
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: group.persons
-    state: not_home
-  action:
-  - data:
-      message: Die Tür wurde unerwartet geöffnet!
-    service: notify.mobile_app_sm_g973f
 - id: '1594497505269'
   alias: HassIO Update
   description: ''
@@ -115,19 +99,6 @@
   - data: {}
     service: script.tado_home
   mode: single
-- id: '1594498764211'
-  alias: Zigbee Device Update
-  description: ''
-  trigger:
-  - entity_id: group.zigbee_device_update
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      message: Zigbee Device Update available!
-    service: notify.mobile_app_sm_g973f
 - id: '1567199368534'
   alias: HA recovers after power outage
   trigger:
