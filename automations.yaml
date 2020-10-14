@@ -115,7 +115,7 @@
   - type: opened
     platform: device
     device_id: a01e02250de411ebb0a865694a1b9812
-    entity_id: binary_sensor.0x00158d00053ef52b_contact
+    entity_id: binary_sensor.badfenster_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -136,7 +136,7 @@
   - type: not_opened
     platform: device
     device_id: a01e02250de411ebb0a865694a1b9812
-    entity_id: binary_sensor.0x00158d00053ef52b_contact
+    entity_id: binary_sensor.badfenster_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -157,7 +157,7 @@
   - type: opened
     platform: device
     device_id: 793f29c60de311eb80fa89858ee33fb7
-    entity_id: binary_sensor.0x00158d00045cc6ed_contact
+    entity_id: binary_sensor.buerofenster_1_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -166,7 +166,7 @@
   - type: opened
     platform: device
     device_id: 9c68eb600de311ebb23e1bbe6650a960
-    entity_id: binary_sensor.0x00158d00047db86a_contact
+    entity_id: binary_sensor.buerofenster_2_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -187,7 +187,7 @@
   - type: not_opened
     platform: device
     device_id: 793f29c60de311eb80fa89858ee33fb7
-    entity_id: binary_sensor.0x00158d00045cc6ed_contact
+    entity_id: binary_sensor.buerofenster_1_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -196,7 +196,7 @@
   - type: not_opened
     platform: device
     device_id: 9c68eb600de311ebb23e1bbe6650a960
-    entity_id: binary_sensor.0x00158d00047db86a_contact
+    entity_id: binary_sensor.buerofenster_2_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -234,7 +234,7 @@
   - type: not_opened
     platform: device
     device_id: 268faaa50de411eb813a8d311a1e6c35
-    entity_id: binary_sensor.0x00158d000572e533_contact
+    entity_id: binary_sensor.schlafzimmerfenster_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -255,7 +255,7 @@
   - type: not_opened
     platform: device
     device_id: 45a2b8150de411eb8767af5af9eb4d10
-    entity_id: binary_sensor.0x00158d00047db812_contact
+    entity_id: binary_sensor.schlafzimmerfenster_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -276,7 +276,7 @@
   - type: opened
     platform: device
     device_id: 45a2b8150de411eb8767af5af9eb4d10
-    entity_id: binary_sensor.0x00158d00047db812_contact
+    entity_id: binary_sensor.wohnzimmertuer_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -297,7 +297,7 @@
   - type: opened
     platform: device
     device_id: 268faaa50de411eb813a8d311a1e6c35
-    entity_id: binary_sensor.0x00158d000572e533_contact
+    entity_id: binary_sensor.wohnzimmertuer_contact
     domain: binary_sensor
     for:
       hours: 0
