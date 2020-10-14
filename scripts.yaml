@@ -44,17 +44,6 @@ tado_away:
     entity_id: climate.buro
     preset_mode: away
     type: set_preset_mode
-light_set_home:
-  alias: Light set home
-  sequence:
-  - device_id: d6623553ef894050aec89114d973863a
-    domain: light
-    entity_id: light.bulb3_light
-    flash: long
-    type: turn_on
-  - after: sunset
-    before: sunrise
-    condition: sun
 windows_notify_open:
   alias: Notify window open
   sequence:
@@ -65,18 +54,18 @@ windows_notify_open:
       message: Es sind noch Fenster offen!
     service: notify.mobile_app_sm_g973f
 restart_hass:
-    alias: Restart Home Assistant
-    sequence:
-      - service: shell_command.restart_hass
+  alias: Restart Home Assistant
+  sequence:
+  - service: shell_command.restart_hass
 restart_zigbee2mqtt:
-    alias: Restart Zigbee2MQTT
-    sequence:
-      - service: shell_command.restart_zigbee2mqtt
+  alias: Restart Zigbee2MQTT
+  sequence:
+  - service: shell_command.restart_zigbee2mqtt
 restart_mosquitto:
-    alias: Restart Mosquitto Broker
-    sequence:
-      - service: shell_command.restart_mosquitto
+  alias: Restart Mosquitto Broker
+  sequence:
+  - service: shell_command.restart_mosquitto
 restart_unifi:
-    alias: Restart Unifi Controller
-    sequence:
-      - service: shell_command.restart_unifi
+  alias: Restart Unifi Controller
+  sequence:
+  - service: shell_command.restart_unifi

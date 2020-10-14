@@ -3,3 +3,19 @@ homekit:
   filter:
     include_entities:
       - switch.plug1_switch
+      - light.flex1_light
+      - binary_sensor.badfenster_contact
+      - binary_sensor.buerofenster_1_contact
+      - binary_sensor.buerofenster_2_contact
+      - binary_sensor.kuechentuer_contact
+      - binary_sensor.schlafzimmerfenster_contact
+      - binary_sensor.wohnzimmertuer_contact
+      - sensor.temp1_temperature
+      - sensor.temp1_pressure
+      - sensor.temp1_humidity
+      - sensor.temp2_temperature
+      - sensor.temp2_pressure
+      - sensor.temp2_humidity
+      - sensor.temp3_temperature
+      - sensor.temp3_pressure
+      - sensor.temp3_humidity

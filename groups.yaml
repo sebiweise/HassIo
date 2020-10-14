@@ -4,3 +4,13 @@ persons:
   entities:
     - person.hannah
     - person.sebastian_weise
+windows:
+  name: Fenster
+  icon: mdi:window-closed-variant
+  entities:
+    - binary_sensor.badfenster_contact
+    - binary_sensor.buerofenster_1_contact
+    - binary_sensor.buerofenster_2_contact
+    - binary_sensor.kuechentuer_contact
+    - binary_sensor.schlafzimmerfenster_contact
+    - binary_sensor.wohnzimmertuer_contact

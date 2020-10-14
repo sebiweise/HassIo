@@ -69,21 +69,6 @@
     service: script.tado_away
   - data: {}
     service: script.windows_notify_open
-- id: '1594497505269'
-  alias: HassIO Update
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.updater
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      message: Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version')}}
-        is now available.
-      title: New Home Assistant Release
-    service: notify.mobile_app_sm_g973f
 - id: '1594498205181'
   alias: Welcome Home
   description: ''
@@ -94,8 +79,6 @@
     to: home
   condition: []
   action:
-  - data: {}
-    service: script.light_set_home
   - data: {}
     service: script.tado_home
   mode: single
@@ -129,18 +112,18 @@
   alias: Badfenster open - Heating off
   description: ''
   trigger:
-  - device_id: 32272979cf9a47908b1c48e8d1f37a4f
+  - type: opened
+    platform: device
+    device_id: a01e02250de411ebb0a865694a1b9812
+    entity_id: binary_sensor.0x00158d00053ef52b_contact
     domain: binary_sensor
-    entity_id: binary_sensor.badfenster_contact
     for:
       hours: 0
       minutes: 0
       seconds: 10
-    platform: device
-    type: opened
   condition: []
   action:
-  - device_id: 9bf52f96fcd511ea9bc05b3662d5ae2c
+  - device_id: 75ecf58eff1311ea92916311568974e5
     domain: climate
     entity_id: climate.badezimmer
     type: set_hvac_mode
@@ -150,18 +133,18 @@
   alias: Badfenster close - Heating auto
   description: ''
   trigger:
-  - device_id: 32272979cf9a47908b1c48e8d1f37a4f
+  - type: not_opened
+    platform: device
+    device_id: a01e02250de411ebb0a865694a1b9812
+    entity_id: binary_sensor.0x00158d00053ef52b_contact
     domain: binary_sensor
-    entity_id: binary_sensor.badfenster_contact
     for:
       hours: 0
       minutes: 0
       seconds: 5
-    platform: device
-    type: not_opened
   condition: []
   action:
-  - device_id: 9bf52f96fcd511ea9bc05b3662d5ae2c
+  - device_id: 75ecf58eff1311ea92916311568974e5
     domain: climate
     entity_id: climate.badezimmer
     type: set_hvac_mode
@@ -171,19 +154,19 @@
   alias: Bürofenster open - Heating off
   description: ''
   trigger:
-  - device_id: 2bf2878e4ba74aa583b4c99b8a7c6256
+  - type: opened
+    platform: device
+    device_id: 793f29c60de311eb80fa89858ee33fb7
+    entity_id: binary_sensor.0x00158d00045cc6ed_contact
     domain: binary_sensor
-    entity_id: binary_sensor.buerofenster_1_contact
     for:
       hours: 0
       minutes: 0
       seconds: 5
-    platform: device
-    type: opened
   - type: opened
     platform: device
-    device_id: 582b7b80fcd011ea9900b34188a8f9b9
-    entity_id: binary_sensor.buerofenster_2_contact
+    device_id: 9c68eb600de311ebb23e1bbe6650a960
+    entity_id: binary_sensor.0x00158d00047db86a_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -191,7 +174,7 @@
       seconds: 5
   condition: []
   action:
-  - device_id: 9bfb6d6dfcd511eab26c5bbe405efff0
+  - device_id: 75efaff7ff1311ea8551a323b185faaa
     domain: climate
     entity_id: climate.buro
     type: set_hvac_mode
@@ -201,19 +184,19 @@
   alias: Bürofenster close - Heating auto
   description: ''
   trigger:
-  - device_id: 2bf2878e4ba74aa583b4c99b8a7c6256
+  - type: not_opened
+    platform: device
+    device_id: 793f29c60de311eb80fa89858ee33fb7
+    entity_id: binary_sensor.0x00158d00045cc6ed_contact
     domain: binary_sensor
-    entity_id: binary_sensor.buerofenster_1_contact
     for:
       hours: 0
       minutes: 0
       seconds: 10
-    platform: device
-    type: not_opened
   - type: not_opened
     platform: device
-    device_id: 582b7b80fcd011ea9900b34188a8f9b9
-    entity_id: binary_sensor.buerofenster_2_contact
+    device_id: 9c68eb600de311ebb23e1bbe6650a960
+    entity_id: binary_sensor.0x00158d00047db86a_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -221,7 +204,7 @@
       seconds: 10
   condition: []
   action:
-  - device_id: 9bfb6d6dfcd511eab26c5bbe405efff0
+  - device_id: 75efaff7ff1311ea8551a323b185faaa
     domain: climate
     entity_id: climate.buro
     type: set_hvac_mode
@@ -250,29 +233,8 @@
   trigger:
   - type: not_opened
     platform: device
-    device_id: b9d9e06ef9c411ea908f970d33c1bba1
-    entity_id: binary_sensor.schlafzimmerfenster_contact
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
-  condition: []
-  action:
-  - device_id: 9beb7420fcd511eaa5a251331e0065bd
-    domain: climate
-    entity_id: climate.schlafzimmer
-    type: set_hvac_mode
-    hvac_mode: auto
-  mode: single
-- id: '1600861093400'
-  alias: Wohnzimmerfenster close - Heating auto
-  description: ''
-  trigger:
-  - type: not_opened
-    platform: device
-    device_id: ba8e71effcd011eaae951d0a7421378a
-    entity_id: binary_sensor.wohnzimmerfenster_contact
+    device_id: 268faaa50de411eb813a8d311a1e6c35
+    entity_id: binary_sensor.0x00158d000572e533_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -280,20 +242,41 @@
       seconds: 5
   condition: []
   action:
-  - device_id: 9be8ac74fcd511eaa71feb7b4e8544ca
+  - device_id: 75e9d2a8ff1311ea949f3518634ebbf7
+    domain: climate
+    entity_id: climate.schlafzimmer
+    type: set_hvac_mode
+    hvac_mode: auto
+  mode: single
+- id: '1600861093400'
+  alias: Wohnzimmertür close - Heating auto
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 45a2b8150de411eb8767af5af9eb4d10
+    entity_id: binary_sensor.0x00158d00047db812_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: 75e7ef50ff1311eaabe0a71285cb5261
     domain: climate
     entity_id: climate.wohnzimmer
     type: set_hvac_mode
     hvac_mode: auto
   mode: single
 - id: '1600861127097'
-  alias: Wohnzimmerfenster open - Heating off
+  alias: Wohnzimmertür open - Heating off
   description: ''
   trigger:
   - type: opened
     platform: device
-    device_id: ba8e71effcd011eaae951d0a7421378a
-    entity_id: binary_sensor.wohnzimmerfenster_contact
+    device_id: 45a2b8150de411eb8767af5af9eb4d10
+    entity_id: binary_sensor.0x00158d00047db812_contact
     domain: binary_sensor
     for:
       hours: 0
@@ -301,9 +284,30 @@
       seconds: 10
   condition: []
   action:
-  - device_id: 9be8ac74fcd511eaa71feb7b4e8544ca
+  - device_id: 75e7ef50ff1311eaabe0a71285cb5261
     domain: climate
     entity_id: climate.wohnzimmer
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1602657800242'
+  alias: Schlafzimmerfenster open - Heating off
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 268faaa50de411eb813a8d311a1e6c35
+    entity_id: binary_sensor.0x00158d000572e533_contact
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - device_id: 75e9d2a8ff1311ea949f3518634ebbf7
+    domain: climate
+    entity_id: climate.schlafzimmer
     type: set_hvac_mode
     hvac_mode: 'off'
   mode: single

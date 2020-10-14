@@ -5,5 +5,10 @@ google_assistant:
   secure_devices_pin: !secret google_securedevicespin
   exposed_domains:
     - vacuum
+  entity_config:
+    switch.plug1_switch:
+      name: Brunnen
+    light.flex1_light:
+      name: Flex1
 
 cast:
