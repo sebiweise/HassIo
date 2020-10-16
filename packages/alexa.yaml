@@ -1,0 +1,16 @@
+alexa:
+  smart_home:
+    locale: de-DE
+    endpoint: https://api.eu.amazonalexa.com/v3/events
+    filter:
+      include_domains:
+        - vacuum
+      include_entities:
+        - switch.plug1_switch
+        - light.flex1_light
+    entity_config:
+      switch.plug1_switch:
+        name: "Brunnen"
+        display_categories: SMARTPLUG
+      light.flex1_light:
+        name: "Flex1"
