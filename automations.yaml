@@ -52,36 +52,6 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.zigbee_permit_join
-- id: '1594497029621'
-  alias: Away Mode
-  description: ''
-  trigger:
-  - entity_id: group.persons
-    from: home
-    platform: state
-    to: not_home
-  condition: []
-  action:
-  - data: {}
-    entity_id: all
-    service: light.turn_off
-  - data: {}
-    service: script.tado_away
-  - data: {}
-    service: script.windows_notify_open
-- id: '1594498205181'
-  alias: Welcome Home
-  description: ''
-  trigger:
-  - entity_id: group.persons
-    from: not_home
-    platform: state
-    to: home
-  condition: []
-  action:
-  - data: {}
-    service: script.tado_home
-  mode: single
 - id: '1567199368534'
   alias: HA recovers after power outage
   trigger:
@@ -210,23 +180,6 @@
     type: set_hvac_mode
     hvac_mode: auto
   mode: single
-- id: '1599658799345'
-  alias: Window Open Notification
-  description: ''
-  trigger:
-  - entity_id: group.windows
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: group.persons
-    state: not_home
-  action:
-  - data:
-      message: Ein Fenster wurde unerwartet geöffnet!
-    service: notify.mobile_app_sm_g973f
-  mode: single
 - id: '1600528478979'
   alias: Schlafzimmerfenster close - Heating auto
   description: ''
@@ -310,4 +263,38 @@
     entity_id: climate.schlafzimmer
     type: set_hvac_mode
     hvac_mode: 'off'
+  mode: single
+- id: '1603014173582'
+  alias: Bad Switch - on
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 04bb48280e0911eb856a253ff95a911b
+    type: action
+    subtype: button_1_single
+    discovery_id: 0x04cf8cdf3c77d1a7 action_button_1_single
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 4501879d0b6a11ebaaf691dba8e5aeb7
+    entity_id: light.panel_1
+    domain: light
+  mode: single
+- id: '1603014181870'
+  alias: Bad Switch - off
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 04bb48280e0911eb856a253ff95a911b
+    type: action
+    subtype: button_2_single
+    discovery_id: 0x04cf8cdf3c77d1a7 action_button_2_single
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 4501879d0b6a11ebaaf691dba8e5aeb7
+    entity_id: light.panel_1
+    domain: light
   mode: single
