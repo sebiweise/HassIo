@@ -1,0 +1,8 @@
+binary_sensor.badfenster_contact:
+  device_class: window
+binary_sensor.buerofenster_1_contact:
+  device_class: window
+binary_sensor.buerofenster_2_contact:
+  device_class: window
+binary_sensor.schlafzimmerfenster_contact:
+  device_class: window

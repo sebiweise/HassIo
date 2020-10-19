@@ -8,7 +8,31 @@ alexa:
       include_entities:
         - switch.plug1_switch
         - light.flex1_light
+        # - binary_sensor.badfenster_contact
+        # - binary_sensor.buerofenster_1_contact
+        # - binary_sensor.buerofenster_2_contact
+        # - binary_sensor.kuechentuer_contact
+        # - binary_sensor.schlafzimmerfenster_contact
+        # - binary_sensor.wohnzimmertuer_contact
     entity_config:
+      # binary_sensor.badfenster_contact:
+      #   name: "Badfenster"
+      #   display_categories: CONTACT
+      # binary_sensor.buerofenster_1_contact:
+      #   name: "Bürofenster 1"
+      #   display_categories: CONTACT
+      # binary_sensor.buerofenster_2_contact:
+      #   name: "Bürofenster 2"
+      #   display_categories: CONTACT
+      # binary_sensor.kuechentuer_contact:
+      #   name: "Küchentür"
+      #   display_categories: CONTACT
+      # binary_sensor.schlafzimmerfenster_contact:
+      #   name: "Schlafzimmerfenster"
+      #   display_categories: CONTACT
+      # binary_sensor.wohnzimmertuer_contact:
+      #   name: "Wohnzimmertür"
+      #   display_categories: CONTACT
       switch.plug1_switch:
         name: "Brunnen"
         display_categories: SMARTPLUG
