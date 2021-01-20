@@ -1,0 +1,14 @@
+/.cloud
+/.storage
+/www
+/custom_components
+/tts
+/deps
+/image
+
+secrets.yaml
+.ps4-games.json
+.uuid
+home-assistant.log
+known_devices.yaml
+*/SERVICE_ACCOUNT.JSON
