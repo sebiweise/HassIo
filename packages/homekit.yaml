@@ -1,0 +1,19 @@
+homekit:
+  auto_start: true
+  filter:
+    include_domains:
+      - light
+      - vacuum
+      - climate
+    include_entities:
+      - switch.lichterkette_buero
+      - switch.lichterkette_schlaf
+      - switch.brunnen
+      - input_boolean.home_mode
+    include_entity_globs:
+      - binary_sensor.*_contact
+      - binary_sensor.*fenster_*
+      - binary_sensor.*tur_*
+      - binary_sensor.*fenster
+      - binary_sensor.*tur
+      - binary_sensor.move_*

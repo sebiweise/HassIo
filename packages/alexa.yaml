@@ -1,0 +1,37 @@
+alexa:
+  smart_home:
+    locale: de-DE
+    endpoint: https://api.eu.amazonalexa.com/v3/events
+    filter:
+      include_domains:
+        - vacuum
+        - light
+        - climate
+    # entity_config:
+      # binary_sensor.badfenster_contact:
+      #   name: "Badfenster"
+      #   display_categories: CONTACT
+      # binary_sensor.buerofenster_1_contact:
+      #   name: "Bürofenster 1"
+      #   display_categories: CONTACT
+      # binary_sensor.buerofenster_2_contact:
+      #   name: "Bürofenster 2"
+      #   display_categories: CONTACT
+      # binary_sensor.kuechentuer_contact:
+      #   name: "Küchentür"
+      #   display_categories: CONTACT
+      # binary_sensor.schlafzimmerfenster_contact:
+      #   name: "Schlafzimmerfenster"
+      #   display_categories: CONTACT
+      # binary_sensor.wohnzimmertuer_contact:
+      #   name: "Wohnzimmertür"
+      #   display_categories: CONTACT
+      # switch.lichterkette_buero:
+      #   name: "Lichterkette Büro"
+      #   display_categories: SMARTPLUG
+      # switch.lichterkette_schlaf:
+      #   name: "Lichterkette Schlafzimmer"
+      #   display_categories: SMARTPLUG
+      # switch.brunnen:
+      #   name: "Brunnen"
+      #   display_categories: SMARTPLUG

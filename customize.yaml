@@ -1,0 +1,16 @@
+binary_sensor.abstellraumfenster:
+  device_class: window
+binary_sensor.badfenster:
+  device_class: window
+binary_sensor.burofenster_1:
+  device_class: window
+binary_sensor.burofenster_2:
+  device_class: window
+binary_sensor.kuchentur:
+  device_class: door
+binary_sensor.haustur:
+  device_class: door
+binary_sensor.schlafzimmerfenster:
+  device_class: window
+binary_sensor.wohnzimmertur:
+  device_class: door

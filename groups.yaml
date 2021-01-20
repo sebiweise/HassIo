@@ -1,0 +1,22 @@
+windows:
+  name: Fenster
+  icon: mdi:window-closed-variant
+  entities:
+    - binary_sensor.abstellraumfenster
+    - binary_sensor.badfenster
+    - binary_sensor.schlafzimmerfenster
+    - binary_sensor.burofenster_1
+    - binary_sensor.burofenster_2
+doors:
+  name: Türen
+  icon: mdi:door
+  entities:
+    - binary_sensor.kuchentur
+    - binary_sensor.wohnzimmertur
+    - binary_sensor.haustur
+people:
+  name: Personen
+  icon: mdi:account-group
+  entities:
+    - person.hannah_goscinski
+    - person.sebastian_weise

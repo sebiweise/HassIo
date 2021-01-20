@@ -1,0 +1,51 @@
+config:
+discovery:
+map:
+wake_on_lan:
+zeroconf:
+system_health:
+
+sensor:
+  - platform: uptime
+  
+  - platform: time_date
+    display_options:
+      - time
+      - date
+      - date_time
+      - time_date
+      - time_utc
+      - beat
+      
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: disk_free
+        arg: /home
+      - type: memory_free
+      - type: memory_use
+      - type: memory_use_percent
+      - type: processor_use
+      - type: last_boot
+
+  - platform: sql
+    db_url: !secret db_url
+    queries:
+      - name: MariaDB size
+        query: 'SELECT table_schema "homeassistant", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
+        column: 'value'
+        unit_of_measurement: MB
+
+input_text:
+input_number:
+input_datetime:
+input_select:
+
+input_boolean:
+  maintenance_mode:
+    name: HA restarted on demand
+    icon: mdi:restart
+  home_mode:
+    name: Home Mode
+    icon: mdi:home

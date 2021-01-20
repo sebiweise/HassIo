@@ -1,0 +1,3 @@
+tado:
+    username: !secret tado_user
+    password: !secret tado_pwd
