@@ -292,3 +292,104 @@
       friendly_name: Eingangslampe
       supported_features: 43
       state: 'off'
+- id: '1611439880013'
+  name: TV Modus Schlafzimmer An
+  entities:
+    light.nachttischlampe_1:
+      brightness: 13
+      is_deconz_group: false
+      friendly_name: Nachttischlampe 1
+      supported_features: 41
+      state: 'on'
+    light.nachttischlampe_2:
+      brightness: 13
+      is_deconz_group: false
+      friendly_name: Nachttischlampe 2
+      supported_features: 41
+      state: 'on'
+- id: '1611439915302'
+  name: TV Modus Schlafzimmer Aus
+  entities:
+    light.nachttischlampe_1:
+      brightness: 128
+      is_deconz_group: false
+      friendly_name: Nachttischlampe 1
+      supported_features: 41
+      state: 'on'
+    light.nachttischlampe_2:
+      brightness: 128
+      is_deconz_group: false
+      friendly_name: Nachttischlampe 2
+      supported_features: 41
+      state: 'on'
+- id: '1611440205588'
+  name: TV Modus Wohnzimmer An
+  entities:
+    light.ecklampe_wohn:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 13
+      color_temp: 400
+      is_deconz_group: false
+      friendly_name: Ecklampe Wohn
+      supported_features: 43
+      state: 'on'
+- id: '1611440245695'
+  name: TV Modus Wohnzimmer Aus
+  entities:
+    light.ecklampe_wohn:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 178
+      color_temp: 400
+      is_deconz_group: false
+      friendly_name: Ecklampe Wohn
+      supported_features: 43
+      state: 'on'
+- id: '1611441817254'
+  name: Alarmierung
+  entities:
+    light.nachttischlampe_1:
+      brightness: 102
+      is_deconz_group: false
+      friendly_name: Nachttischlampe 1
+      supported_features: 41
+      state: 'on'
+    light.ecklampe_wohn:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 128
+      color_temp: 400
+      is_deconz_group: false
+      friendly_name: Ecklampe Wohn
+      supported_features: 43
+      state: 'on'
+    light.eingangslampe:
+      min_mireds: 140
+      max_mireds: 650
+      brightness: 254
+      color_temp: 332
+      is_deconz_group: false
+      friendly_name: Eingangslampe
+      supported_features: 43
+      state: 'on'
+    light.deckenlampe_bad:
+      min_mireds: 250
+      max_mireds: 454
+      brightness: 254
+      color_temp: 332
+      is_deconz_group: false
+      friendly_name: Deckenlampe Bad
+      supported_features: 43
+      state: 'on'
+    light.strip_kuche:
+      min_mireds: 140
+      max_mireds: 650
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 216
+      is_deconz_group: false
+      friendly_name: Strip Küche
+      supported_features: 63
+      state: 'on'

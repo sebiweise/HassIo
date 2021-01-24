@@ -1,0 +1,5 @@
+name: Personen
+icon: mdi:account-group
+entities:
+  - person.hannah_goscinski
+  - person.sebastian_weise

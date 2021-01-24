@@ -1,0 +1,34 @@
+samsungtv:
+  - host: !secret samsung_wohn_host
+    name: TV Wohnzimmer
+    turn_on_action:
+      - service: wake_on_lan.send_magic_packet
+        data:
+          mac: !secret samsung_wohn_mac
+
+automation:
+##TV Wohnzimmer
+- alias: TV Wohnzimmer Playing
+  trigger:
+  - platform: state
+    entity_id: media_player.tv_wohnzimmer
+    from: idle
+    to: playing
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - scene: scene.tv_modus_wohnzimmer_an
+  mode: single
+- alias: TV Wohnzimmer Paused/Stopped
+  trigger:
+  - platform: state
+    entity_id: media_player.tv_wohnzimmer
+    from: playing
+    to: idle
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - scene: scene.tv_modus_wohnzimmer_aus
+  mode: single

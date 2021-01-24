@@ -10,6 +10,7 @@ homekit:
       - switch.lichterkette_schlaf
       - switch.brunnen
       - input_boolean.home_mode
+      - input_switch.fire_mode
     include_entity_globs:
       - binary_sensor.*_contact
       - binary_sensor.*fenster_*

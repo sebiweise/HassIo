@@ -1,0 +1,6 @@
+name: Türen
+icon: mdi:door
+entities:
+  - binary_sensor.kuchentur
+  - binary_sensor.wohnzimmertur
+  - binary_sensor.haustur

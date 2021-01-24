@@ -35,3 +35,34 @@ alexa:
       # switch.brunnen:
       #   name: "Brunnen"
       #   display_categories: SMARTPLUG
+
+media_player:
+  - platform: androidtv
+    name: FireTV Schlafzimmer
+    host: !secret firetv_schlaf_host
+
+automation:
+- alias: FireTV Schlafzimmer Playing
+  trigger:
+  - platform: state
+    entity_id: media_player.firetv_schlafzimmer
+    from: idle
+    to: playing
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - scene: scene.tv_modus_schlafzimmer_an
+  mode: single
+- alias: FireTV Schlafzimmer Paused/Stopped
+  trigger:
+  - platform: state
+    entity_id: media_player.firetv_schlafzimmer
+    from: playing
+    to: idle
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - scene: scene.tv_modus_schlafzimmer_aus
+  mode: single

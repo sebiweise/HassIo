@@ -1,0 +1,8 @@
+name: Fenster
+icon: mdi:window-closed-variant
+entities:
+  - binary_sensor.abstellraumfenster
+  - binary_sensor.badfenster
+  - binary_sensor.schlafzimmerfenster
+  - binary_sensor.burofenster_1
+  - binary_sensor.burofenster_2
