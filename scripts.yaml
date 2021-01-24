@@ -1,0 +1,53 @@
+tado_set_home:
+  sequence:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.abstellraum
+        preset_mode: home
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.badezimmer
+        preset_mode: home
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.buro
+        preset_mode: home
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.kuche
+        preset_mode: home
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.schlafzimmer
+        preset_mode: home
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.wohnzimmer
+        preset_mode: home
+
+tado_set_away:
+  sequence:
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.abstellraum
+        preset_mode: away
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.badezimmer
+        preset_mode: away
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.buro
+        preset_mode: away
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.kuche
+        preset_mode: away
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.schlafzimmer
+        preset_mode: away
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.wohnzimmer
+        preset_mode: away

@@ -1,0 +1,18 @@
+automation:
+  - alias: Alert Window Open
+    trigger:
+      - platform: state
+        entity_id: weather.home
+        to: 'rain'
+      - platform: state
+        entity_id: binary_sensor.haustur
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: group.windows
+        state: 'on'
+    action:
+      - service: notify.mobile_app_iphonesw
+        data:
+          title: Window open
+          message: "The {{ dict((states|selectattr('entity_id', 'in', state_attr('group.windows', 'entity_id'))|list)|groupby('state'))['on']|map(attribute='name')|list|join(', ') }} is opened."

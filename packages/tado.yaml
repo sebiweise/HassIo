@@ -4,67 +4,29 @@ tado:
 
 automation:
 ##Abstellraum
-- alias: Abstellraumfenster open - Heating off
+- alias: Abstellraumfenster - Heating
   trigger:
   - platform: state
     entity_id: binary_sensor.abstellraumfenster
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.abstellraum
-      hvac_mode: 'off'
-  mode: single
-- alias: Abstellraumfenster close - Heating auto
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.abstellraumfenster
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.abstellraum
-      hvac_mode: auto
+      hvac_mode: "{{'off' if trigger.to_state.state == 'on' else 'auto'}}"
   mode: single
 
 ##Badezimmer
-- alias: Badfenster open - Heating off
+- alias: Badfenster - Heating
   trigger:
   - platform: state
     entity_id: binary_sensor.badfenster
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.badezimmer
-      hvac_mode: 'off'
-  mode: single
-- alias: Badfenster close - Heating auto
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.badfenster
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.badezimmer
-      hvac_mode: auto
+      hvac_mode: "{{'off' if trigger.to_state.state == 'on' else 'auto'}}"
   mode: single
 
 ##Büro
@@ -72,18 +34,12 @@ automation:
   trigger:
   - platform: state
     entity_id: binary_sensor.burofenster_1
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    to: 'on'
+    for: '00:00:10'
   - platform: state
     entity_id: binary_sensor.burofenster_2
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    to: 'on'
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
@@ -94,15 +50,12 @@ automation:
   trigger:
   - platform: state
     entity_id: binary_sensor.burofenster_1
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
+    to: 'off'
+    for: '00:00:10'
   condition:
   - condition: state
     entity_id: binary_sensor.burofenster_2
-    state: 'close'
+    state: 'off'
   action:
   - service: climate.set_hvac_mode
     data:
@@ -113,15 +66,12 @@ automation:
   trigger:
   - platform: state
     entity_id: binary_sensor.burofenster_2
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
+    to: 'off'
+    for: '00:00:10'
   condition:
   - condition: state
     entity_id: binary_sensor.burofenster_1
-    state: 'close'
+    state: 'off'
   action:
   - service: climate.set_hvac_mode
     data:
@@ -130,97 +80,40 @@ automation:
   mode: single
 
 ##Küche
-- alias: Küchentür open - Heating off
+- alias: Küchentür - Heating
   trigger:
   - platform: state
     entity_id: binary_sensor.kuchentur
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.kuche
-      hvac_mode: 'off'
-  mode: single
-- alias: Küchentür close - Heating auto
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kuchentur
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.kuche
-      hvac_mode: auto
+      hvac_mode: "{{'off' if trigger.to_state.state == 'on' else 'auto'}}"
   mode: single
 
 ##Schlafzimmer
-- alias: Schlafzimmerfenster open - Heating off
+- alias: Schlafzimmerfenster - Heating
   trigger:
   - platform: state
     entity_id: binary_sensor.schlafzimmerfenster
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.schlafzimmer
-      hvac_mode: 'off'
-  mode: single
-- alias: Schlafzimmerfenster close - Heating auto
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.schlafzimmerfenster
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.schlafzimmer
-      hvac_mode: auto
+      hvac_mode: "{{'off' if trigger.to_state.state == 'on' else 'auto'}}"
   mode: single
 
 ##Wohnzimmer
-- alias: Wohnzimmertür open - Heating off
+- alias: Wohnzimmertür - Heating
   trigger:
   - platform: state
     entity_id: binary_sensor.wohnzimmertur
-    to: 'open'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
+    for: '00:00:10'
   action:
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.wohnzimmer
-      hvac_mode: 'off'
-  mode: single
-- alias: Wohnzimmertür close - Heating auto
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.wohnzimmertur
-    to: 'close'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.wohnzimmer
-      hvac_mode: auto
+      hvac_mode: "{{'off' if trigger.to_state.state == 'on' else 'auto'}}"
   mode: single

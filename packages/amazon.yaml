@@ -42,6 +42,7 @@ media_player:
     host: !secret firetv_schlaf_host
 
 automation:
+##TV playing
 - alias: FireTV Schlafzimmer Playing
   trigger:
   - platform: state
@@ -54,6 +55,8 @@ automation:
   action:
   - scene: scene.tv_modus_schlafzimmer_an
   mode: single
+
+##TV stopped
 - alias: FireTV Schlafzimmer Paused/Stopped
   trigger:
   - platform: state

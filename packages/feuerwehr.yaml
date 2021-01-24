@@ -4,13 +4,11 @@ input_select:
     options:
       - Bereitschaft
       - Alarmierung
-      - Auf Anfahrt
       - Im Einsatz
     initial: Bereitschaft
     icon: mdi:fire-hydrant
 
 automation:
-
 ##Änderung Einsatzstatus
 - alias: Einsatzstatus
   trigger:
@@ -27,19 +25,14 @@ automation:
       - service: notify.mobile_app_iphonesw
         data:
           title: FF Monheim LZ 1
-          message: ALARM TEST
-    - conditions:
-      - condition: state
-        entity_id: input_select.fire_mode
-        state: Auf Anfahrt
-      sequence:
-      - service: light.turn_off
-        entity_id: all
+          message: "!!! ALARM !!!"
     - conditions:
       - condition: state
         entity_id: input_select.fire_mode
         state: Im Einsatz
-      sequence: []
+      sequence:
+      - service: light.turn_off
+        entity_id: all
     default: []
   mode: single
 
@@ -53,35 +46,16 @@ automation:
       option: Alarmierung
   mode: single
 
-##Anfahrt zur Rettungswache
-- alias: Auf Anfahrt
+##Ankunft auf Rettungswache
+- alias: Ankunft Rettungswache
   trigger:
-  - platform: zone
+  - platform: state
     entity_id: person.sebastian_weise
-    zone: zone.home
-    event: leave
+    to: not_home
   condition:
   - condition: state
     entity_id: input_select.fire_mode
     state: Alarmierung
-  action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.fire_mode
-      option: Auf Anfahrt
-  mode: single
-
-##Ankunft auf Rettungswache
-- alias: Ankunft Rettungswache
-  trigger:
-  - platform: zone
-    entity_id: person.sebastian_weise
-    zone: zone.wache_monheim
-    event: enter
-  condition:
-  - condition: state
-    entity_id: input_select.fire_mode
-    state: Auf Anfahrt
   action:
   - service: input_select.select_option
     data:
@@ -92,10 +66,9 @@ automation:
 ##Ankunft Zuhause nach Einsatz
 - alias: Einsatz beendet
   trigger:
-  - platform: zone
+  - platform: state
     entity_id: person.sebastian_weise
-    zone: zone.home
-    event: enter
+    to: home
   condition:
   - condition: state
     entity_id: input_select.fire_mode

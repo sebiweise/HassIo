@@ -7,7 +7,7 @@ samsungtv:
           mac: !secret samsung_wohn_mac
 
 automation:
-##TV Wohnzimmer
+##TV playing
 - alias: TV Wohnzimmer Playing
   trigger:
   - platform: state
@@ -20,6 +20,8 @@ automation:
   action:
   - scene: scene.tv_modus_wohnzimmer_an
   mode: single
+
+##TV stopped
 - alias: TV Wohnzimmer Paused/Stopped
   trigger:
   - platform: state

@@ -79,7 +79,7 @@
     from: 'off'
   condition: []
   action:
-  - scene: scene.tado_set_home
+  - service: script.tado_set_home
   mode: single
 - id: '1609545249550'
   alias: Away Mode
@@ -91,7 +91,7 @@
     from: 'on'
   condition: []
   action:
-  - scene: scene.tado_set_away
+  - service: script.tado_set_away
   - service: light.turn_off
     entity_id: all
   mode: single
