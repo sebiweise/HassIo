@@ -2,6 +2,7 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sebiweise/HassIO)
 ![GitHub last commit](https://img.shields.io/github/last-commit/sebiweise/HassIO)
+[![CodeFactor](https://www.codefactor.io/repository/github/sebiweise/hassio/badge)](https://www.codefactor.io/repository/github/sebiweise/hassio)
 
 ## About my HomeAssistant Configuration
 
